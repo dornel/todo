@@ -1,9 +1,8 @@
 package com.eduardodornel.TodoSymplify.models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.hateoas.RepresentationModel;
 
 @Entity
@@ -11,13 +10,14 @@ import org.springframework.hateoas.RepresentationModel;
 public class TodoModel extends RepresentationModel<TodoModel> {
 
     @Id
-    int id = 0;
-    String name;
-    String status;
-    String priority;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private long  id ;
+    private String name;
+    private String status;
+    private String priority;
 
-    public int getId(){
-        return id++;
+    public long getId(){
+        return id;
 
     }
 
